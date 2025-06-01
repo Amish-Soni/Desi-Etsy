@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema(
       enum: ["customer", "artisan", "admin"],
       default: "customer",
     },
-    isVerified: {
+    isApproved: {
       type: Boolean,
       default: false, // for artisan approval
     },
