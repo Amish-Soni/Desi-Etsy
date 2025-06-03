@@ -8,7 +8,7 @@ import { requireAuth, checkRole } from "../middlewares/authMiddleware.js";
 const router = express.Router();
 
 router.use(requireAuth);
-router.post("/create", checkRole(["user"]), createRazorpayOrder);
-router.post("/verify", checkRole(["user"]), verifyPayment);
+router.post("/create", checkRole(["customer"]), createRazorpayOrder);
+router.post("/verify", checkRole(["customer"]), verifyPayment);
 
 export default router;

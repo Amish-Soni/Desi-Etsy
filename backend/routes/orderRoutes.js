@@ -10,9 +10,9 @@ const router = express.Router();
 
 router.use(requireAuth);
 
-// User
-router.post("/place", checkRole(["user"]), placeOrder);
-router.get("/my-orders", checkRole(["user"]), getUserOrders);
+// Customer
+router.post("/place", checkRole(["customer"]), placeOrder);
+router.get("/my-orders", checkRole(["customer"]), getUserOrders);
 
 // Admin
 router.put("/update-status", checkRole(["admin"]), updateOrderStatus);

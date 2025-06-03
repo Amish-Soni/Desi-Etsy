@@ -9,6 +9,8 @@ import productRoutes from "./routes/productRoutes.js";
 import cartRoutes from "./routes/cartRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
 import paymentRoutes from "./routes/paymentRoutes.js";
+import categoryRoutes from "./routes/categoryRoutes.js";
+import publicRoutes from "./routes/publicRoutes.js";
 
 // Load environment variables
 dotenv.config();
@@ -41,6 +43,8 @@ app.use("/api/products", productRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/payment", paymentRoutes);
+app.use("/api/categories", categoryRoutes);
+app.use("/api/public", publicRoutes);
 
 // Start server
 const PORT = process.env.PORT || 8080;

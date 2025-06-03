@@ -55,11 +55,37 @@ export const deleteProduct = async (req, res) => {
 // Get all approved products (for customers)
 export const getAllApprovedProducts = async (req, res) => {
   try {
-    const products = await Product.find({ approved: true }).populate(
-      "category artisan"
-    );
-    res.status(200).json(products);
+    const { category, artisan, search, minPrice, maxPrice } = req.query;
+
+    // Build filter object dynamically
+    const filter = { isApproved: true };
+
+    if (category) filter.category = category;
+    if (artisan) filter.artisan = artisan;
+
+    if (minPrice || maxPrice) {
+      filter.price = {};
+      if (minPrice) filter.price.$gte = Number(minPrice);
+      if (maxPrice) filter.price.$lte = Number(maxPrice);
+    }
+
+    if (search) {
+      // Search by product name or description (case-insensitive)
+      filter.$or = [
+        { name: { $regex: search, $options: "i" } },
+        { description: { $regex: search, $options: "i" } },
+      ];
+    }
+
+    // Populate category and artisan names
+    const products = await Product.find(filter)
+      .populate("category", "name")
+      .populate("artisan", "name")
+      .sort({ createdAt: -1 });
+
+    res.json(products);
   } catch (err) {
-    res.status(500).json({ message: "Failed to fetch products" });
+    console.error("Error fetching products:", err);
+    res.status(500).json({ message: "Server Error" });
   }
 };
