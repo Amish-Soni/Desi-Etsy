@@ -1,0 +1,14 @@
+/* src/index.css */
+
+/* These three lines are for Tailwind CSS. They MUST be at the top. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+  This rule now has full control and will hide the horizontal 
+  overflow for the entire page, fixing the blank space issue.
+*/
+body {
+  overflow-x: hidden;
+}
