@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useCart } from "../context/CartContext";
-import "../styles/Cart.css";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../utils/axiosInstance";
 import { toast } from "react-hot-toast";
+import "../styles/Cart.css";
 
 const Cart = () => {
   const navigate = useNavigate();

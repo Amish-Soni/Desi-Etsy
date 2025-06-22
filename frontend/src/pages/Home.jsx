@@ -13,6 +13,7 @@ const Home = () => {
     minPrice: "",
     maxPrice: "",
   });
+  const [featuredArtisans, setFeaturedArtisans] = useState([]);
 
   const fetchProducts = async () => {
     try {
@@ -24,15 +25,65 @@ const Home = () => {
     }
   };
 
+  const fetchArtisans = async () => {
+    try {
+      const res = await axiosInstance.get("/public/approved-artisans");
+      setFeaturedArtisans(res.data);
+    } catch (err) {
+      console.error("Error fetching artisans", err);
+    }
+  };
+
   useEffect(() => {
     fetchProducts();
+    fetchArtisans();
   }, [filters]);
 
   return (
-    <div className="home-container">
-      <FilterSidebar filters={filters} setFilters={setFilters} />
-      <ProductList products={products} />
-    </div>
+    <>
+      <div className="hero-container">
+        <div className="hero-section">
+          <div className="hero-content">
+            <h1>Discover Unique Handcrafted Treasures</h1>
+            <p>
+              Support local artisans and bring authentic handmade products
+              directly to your doorstep.
+            </p>
+          </div>
+        </div>
+
+        <section className="featured-artisans">
+          <h2>Featured Artisans</h2>
+          <div className="artisan-cards">
+            {featuredArtisans.length === 0 ? (
+              <p>No artisans to display</p>
+            ) : (
+              featuredArtisans.map((artisan) => (
+                <div className="artisan-card" key={artisan._id}>
+                  <img
+                    src={
+                      artisan.profileImage
+                        ? `data:${artisan.profileImage.contentType};base64,${artisan.profileImage.data}`
+                        : "/artisan.jpg"
+                    }
+                    alt={artisan.name}
+                  />
+                  <h4>{artisan.name}</h4>
+                  <p>
+                    {artisan.bio ||
+                      "Passionate artisan creating handmade goods."}
+                  </p>
+                </div>
+              ))
+            )}
+          </div>
+        </section>
+      </div>
+      <div className="home-container">
+        <FilterSidebar filters={filters} setFilters={setFilters} />
+        <ProductList products={products} />
+      </div>
+    </>
   );
 };
 

@@ -1,15 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import AuthForm from "../components/Auth/AuthForm";
 import axiosInstance from "../utils/axiosInstance";
 import { toast } from "react-hot-toast";
 import { useNavigate, Link } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 const Login = () => {
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
-
+  const [formData, setFormData] = useState({ email: "", password: "" });
+  const { setAuthUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -18,6 +16,7 @@ const Login = () => {
       const res = await axiosInstance.post("/auth/login", formData);
       toast.success(res.data.message);
 
+      setAuthUser(res.data.user);
       const role = res.data.user?.role;
 
       if (role === "admin") {

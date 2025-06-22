@@ -3,15 +3,19 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import axiosInstance from "../../utils/axiosInstance";
 import { toast } from "react-hot-toast";
 import "../../styles/Navbar.css";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 const ArtisanNavbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
+  const { setAuthUser } = useContext(AuthContext);
 
   const handleLogout = async () => {
     try {
       await axiosInstance.post("/auth/logout");
+      setAuthUser(null);
       toast.success("Logged out");
       navigate("/login");
     } catch {
