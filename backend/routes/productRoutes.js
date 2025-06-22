@@ -17,7 +17,7 @@ router.use(checkRole(["artisan"]));
 
 // Artisan-side Product Routes
 router.post("/", createProduct);
-router.get("/approved", getMyProducts);
+router.get("/my-approved", getMyProducts);
 router.put("/:id", updateProduct);
 router.delete("/:id", deleteProduct);
 
