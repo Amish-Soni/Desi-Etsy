@@ -12,7 +12,7 @@ import { requireAuth, checkRole } from "../middlewares/authMiddleware.js";
 const router = express.Router();
 
 router.use(requireAuth);
-router.use(checkRole(["customer"])); // <-- Changed from "user" to "customer"
+router.use(checkRole(["customer"]));
 
 router.get("/", getCart);
 router.post("/add", addToCart);

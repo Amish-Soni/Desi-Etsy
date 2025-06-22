@@ -18,6 +18,14 @@ export const addToCart = async (req, res) => {
   try {
     const { productId, quantity } = req.body;
 
+    const product = await Product.findById(productId);
+    if (!product) return res.status(404).json({ message: "Product not found" });
+
+    if (quantity > product.stock)
+      return res
+        .status(400)
+        .json({ message: "Quantity exceeds available stock" });
+
     let cart = await Cart.findOne({ user: req.user._id });
     if (!cart) {
       cart = new Cart({ user: req.user._id, items: [] });
@@ -26,6 +34,18 @@ export const addToCart = async (req, res) => {
     const index = cart.items.findIndex(
       (item) => item.product.toString() === productId
     );
+
+    let existingQty = 0;
+    if (index > -1) {
+      existingQty = cart.items[index].quantity;
+    }
+
+    if (existingQty + quantity > product.stock) {
+      return res
+        .status(400)
+        .json({ message: `Only ${product.stock - existingQty} more in stock` });
+    }
+
     if (index > -1) {
       cart.items[index].quantity += quantity;
     } else {
@@ -39,10 +59,17 @@ export const addToCart = async (req, res) => {
   }
 };
 
-// Update quantity of cart item
 export const updateCartItem = async (req, res) => {
   try {
     const { productId, quantity } = req.body;
+
+    const product = await Product.findById(productId);
+    if (!product) return res.status(404).json({ message: "Product not found" });
+
+    if (quantity > product.stock)
+      return res
+        .status(400)
+        .json({ message: `Only ${product.stock} in stock` });
 
     let cart = await Cart.findOne({ user: req.user._id });
     if (!cart) return res.status(404).json({ message: "Cart not found" });

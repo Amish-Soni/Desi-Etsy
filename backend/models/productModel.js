@@ -18,7 +18,13 @@ const productSchema = new mongoose.Schema(
       ref: "Category",
       required: true,
     },
-    images: [{ type: String }], // Cloudinary/file URLs
+    images: [
+      {
+        data: String,
+        contentType: String,
+      },
+    ],
+
     stock: {
       type: Number,
       default: 1,

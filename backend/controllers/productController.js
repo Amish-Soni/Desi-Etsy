@@ -4,13 +4,26 @@ import Product from "../models/productModel.js";
 export const createProduct = async (req, res) => {
   try {
     const artisanId = req.user._id;
-    const newProduct = new Product({ ...req.body, artisan: artisanId });
-    await newProduct.save();
+    const { name, description, price, stock, category, images } = req.body;
+
+    const product = new Product({
+      name,
+      description,
+      price,
+      stock,
+      category,
+      artisan: artisanId,
+      isApproved: false,
+      images, // expecting array of { data, contentType }
+    });
+
+    await product.save();
     res.status(201).json({
       message: "Product created, pending admin approval",
-      product: newProduct,
+      product,
     });
   } catch (err) {
+    console.error("Error:", err);
     res.status(500).json({ message: "Error creating product" });
   }
 };
@@ -83,7 +96,15 @@ export const getAllApprovedProducts = async (req, res) => {
       .populate("artisan", "name")
       .sort({ createdAt: -1 });
 
-    res.json(products);
+    const formatted = products.map((p) => ({
+      ...p._doc,
+      imageUrl: p.image
+        ? `data:${p.image.contentType};base64,${p.image.data.toString(
+            "base64"
+          )}`
+        : null,
+    }));
+    res.json(formatted);
   } catch (err) {
     console.error("Error fetching products:", err);
     res.status(500).json({ message: "Server Error" });
