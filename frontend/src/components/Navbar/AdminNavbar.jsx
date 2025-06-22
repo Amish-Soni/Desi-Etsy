@@ -29,9 +29,9 @@ const AdminNavbar = () => {
         ☰
       </button>
       <ul className={`nav-links ${open ? "active" : ""}`}>
-        <li className={isActive("/admin/pending-artisans") ? "active" : ""}>
-          <Link to="/admin/pending-artisans" onClick={() => setOpen(false)}>
-            Artisan Approvals
+        <li className={isActive("/admin/orders") ? "active" : ""}>
+          <Link to="/admin/orders" onClick={() => setOpen(false)}>
+            Manage Orders
           </Link>
         </li>
         <li className={isActive("/admin/pending-products") ? "active" : ""}>
@@ -39,9 +39,9 @@ const AdminNavbar = () => {
             Product Approvals
           </Link>
         </li>
-        <li className={isActive("/admin/orders") ? "active" : ""}>
-          <Link to="/admin/orders" onClick={() => setOpen(false)}>
-            Manage Orders
+        <li className={isActive("/admin/pending-artisans") ? "active" : ""}>
+          <Link to="/admin/pending-artisans" onClick={() => setOpen(false)}>
+            Artisan Approvals
           </Link>
         </li>
         <li>

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axiosInstance from "../utils/axiosInstance";
 import { toast } from "react-hot-toast";
 import "../styles/Admin.css";
+import "../styles/Artisan.css";
+import ProductImageCarousel from "../components/Artisan/ProductImageCarousel";
 
 const PendingProducts = () => {
   const [products, setProducts] = useState([]);
@@ -42,27 +44,45 @@ const PendingProducts = () => {
   return (
     <div className="admin-section">
       <h3>Pending Products</h3>
+
       {products.length === 0 ? (
         <p>No pending products.</p>
       ) : (
-        <ul>
+        <div className="product-list">
           {products.map((product) => (
-            <li key={product._id}>
-              <strong>{product.name}</strong> by {product.artisan.name} in{" "}
-              {product.category.name}
-              <br />
+            <div className="artisan-product-card" key={product._id}>
+              <div className="carousel-container">
+                {product.images?.length > 0 ? (
+                  <ProductImageCarousel images={product.images} />
+                ) : (
+                  <div className="carousel-placeholder">No image available</div>
+                )}
+              </div>
+
+              <h4>{product.name}</h4>
+              <p>{product.description}</p>
+              <p>
+                <strong>₹{product.price}</strong> | Stock: {product.stock}
+              </p>
+              <p>
+                Category: <strong>{product.category?.name}</strong>
+              </p>
+              <p>
+                Artisan: <strong>{product.artisan?.name}</strong>
+              </p>
+
               <button onClick={() => handleApprove(product._id)}>
                 Approve
               </button>
               <button
                 onClick={() => handleReject(product._id)}
-                className="danger"
+                className="delete-btn"
               >
                 Reject
               </button>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );

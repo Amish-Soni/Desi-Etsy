@@ -21,7 +21,7 @@ const Login = () => {
       const role = res.data.user?.role;
 
       if (role === "admin") {
-        navigate("/admin");
+        navigate("/admin/orders");
       } else if (role === "artisan") {
         navigate("/artisan/dashboard");
       } else {

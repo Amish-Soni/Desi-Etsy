@@ -8,9 +8,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
-import Checkout from "./pages/Checkout";
 import MyOrders from "./pages/MyOrders";
-import AdminDashboard from "./pages/AdminDashboard";
 import PendingArtisans from "./pages/PendingArtisans";
 import PendingProducts from "./pages/PendingProducts";
 import AdminOrders from "./pages/AdminOrders";
@@ -28,14 +26,12 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/home" element={<Home />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/checkout" element={<Checkout />} />
         <Route path="/my-orders" element={<MyOrders />} />
 
         <Route path="/artisan/register" element={<ArtisanRegister />} />
         <Route path="/artisan/login" element={<ArtisanLogin />} />
         <Route path="/artisan/dashboard" element={<ArtisanDashboard />} />
 
-        <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/admin/pending-artisans" element={<PendingArtisans />} />
         <Route path="/admin/pending-products" element={<PendingProducts />} />
         <Route path="/admin/orders" element={<AdminOrders />} />
