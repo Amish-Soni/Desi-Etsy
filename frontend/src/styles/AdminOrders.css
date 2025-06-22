@@ -1,0 +1,75 @@
+.admin-orders-page {
+  padding: 30px;
+}
+
+.order-filter {
+  margin-bottom: 20px;
+}
+
+.order-filter select {
+  padding: 6px 10px;
+  margin-left: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.admin-order-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #fffef8;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+}
+
+.admin-order-header p {
+  margin: 5px 0;
+}
+
+.admin-order-items {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.admin-order-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1 1 250px;
+}
+
+.admin-order-item img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.admin-status-update {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.admin-status-update select {
+  padding: 6px 10px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+}
+
+.admin-status-update button {
+  padding: 6px 12px;
+  background-color: #2f855a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.admin-status-update button:hover {
+  background-color: #276749;
+}

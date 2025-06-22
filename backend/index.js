@@ -24,7 +24,10 @@ const app = express();
 // Middleware
 app.use(
   cors({
-    origin: "http://localhost:5173", // frontend
+    origin: [
+      "http://localhost:5173",
+      "https://infotact-project-desi-etsy.netlify.app",
+    ], // frontend
     credentials: true,
   })
 );

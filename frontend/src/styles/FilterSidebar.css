@@ -1,0 +1,23 @@
+.filter-sidebar {
+  width: 220px;
+  padding: 15px;
+  background: #fff5eb;
+  border-radius: 10px;
+  border: 1px solid #d9b6a6;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.filter-sidebar input,
+.filter-sidebar select {
+  padding: 8px;
+  border: 1px solid #c5a79a;
+  border-radius: 6px;
+  font-size: 14px;
+  background: #fffaf6;
+}
+.price-range {
+  display: flex;
+  gap: 8px;
+}

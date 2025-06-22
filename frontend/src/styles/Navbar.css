@@ -1,0 +1,95 @@
+/* Base Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff7e6;
+  padding: 15px 30px;
+  border-bottom: 2px solid #decba4;
+  font-family: "Segoe UI", sans-serif;
+  position: relative;
+}
+
+.nav-logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #5e412f;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links a,
+.logout-btn {
+  text-decoration: none;
+  color: #5e412f;
+  font-weight: 500;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover,
+.logout-btn:hover {
+  color: #bf8f68;
+}
+
+.nav-links .active a {
+  border-bottom: 2px solid #bf8f68;
+  color: #bf8f68;
+}
+
+/* Hamburger Styles */
+.hamburger {
+  display: none;
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: #5e412f;
+  cursor: pointer;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background-color: #fff7e6;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px 20px;
+    border-top: 1px solid #decba4;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+}
+
+.public-navbar {
+  background-color: #ffe4c4;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-brand .site-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+}
