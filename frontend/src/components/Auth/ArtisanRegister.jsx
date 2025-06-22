@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import axiosInstance from "../../utils/axiosInstance";
 import toast from "react-hot-toast";
 import "../../styles/Auth.css";
+import { useNavigate } from "react-router-dom";
 
 const ArtisanRegister = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -21,8 +23,8 @@ const ArtisanRegister = () => {
     try {
       const res = await axiosInstance.post("/auth/register", formData);
       toast.success(res.data.message || "Registered successfully");
-      // Redirect or clear form
       setFormData({ name: "", email: "", password: "", role: "artisan" });
+      navigate("/login");
     } catch (err) {
       toast.error(err.response?.data?.message || "Registration failed");
     }
