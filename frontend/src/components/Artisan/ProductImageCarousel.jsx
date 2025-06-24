@@ -62,37 +62,40 @@ const ProductImageCarousel = ({ images }) => {
             alt={`Product ${currentIndex + 1}`}
           />
 
-          {/* Arrows */}
-          <button className="carousel-btn left" onClick={prevImage}>
-            ‹
-          </button>
-          <button className="carousel-btn right" onClick={nextImage}>
-            ›
-          </button>
+          {images.length > 1 && (
+            <>
+              <button className="carousel-btn left" onClick={prevImage}>
+                ‹
+              </button>
+              <button className="carousel-btn right" onClick={nextImage}>
+                ›
+              </button>
 
-          {/* Dots */}
-          <div className="carousel-dots">
-            {images.map((_, i) => (
-              <span
-                key={i}
-                className={`dot ${i === currentIndex ? "active" : ""}`}
-                onClick={() => goToImage(i)}
-              ></span>
-            ))}
-          </div>
+              <div className="carousel-dots">
+                {images.map((_, i) => (
+                  <span
+                    key={i}
+                    className={`dot ${i === currentIndex ? "active" : ""}`}
+                    onClick={() => goToImage(i)}
+                  ></span>
+                ))}
+              </div>
 
-          {/* Thumbnails */}
-          <div className="carousel-thumbs">
-            {images.map((img, i) => (
-              <img
-                key={i}
-                src={`data:${img.contentType};base64,${img.data}`}
-                alt={`Thumb ${i + 1}`}
-                className={`thumb-img ${i === currentIndex ? "selected" : ""}`}
-                onClick={() => goToImage(i)}
-              />
-            ))}
-          </div>
+              <div className="carousel-thumbs">
+                {images.map((img, i) => (
+                  <img
+                    key={i}
+                    src={`data:${img.contentType};base64,${img.data}`}
+                    alt={`Thumb ${i + 1}`}
+                    className={`thumb-img ${
+                      i === currentIndex ? "selected" : ""
+                    }`}
+                    onClick={() => goToImage(i)}
+                  />
+                ))}
+              </div>
+            </>
+          )}
         </>
       ) : (
         <div className="carousel-placeholder">No image available</div>

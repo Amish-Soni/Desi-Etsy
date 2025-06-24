@@ -40,6 +40,11 @@
   transition: border-color 0.3s;
 }
 
+.artisan-product-form textarea {
+  height: 100px;
+  resize: vertical;
+}
+
 .artisan-product-form input:focus,
 .artisan-product-form textarea:focus,
 .artisan-product-form select:focus {

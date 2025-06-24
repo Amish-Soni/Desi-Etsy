@@ -1,25 +1,20 @@
 import React from "react";
-import "../styles/ProductCard.css";
 import { useCart } from "../context/CartContext";
 import { toast } from "react-hot-toast";
+import ProductImageCarousel from "./Artisan/ProductImageCarousel";
 
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
-  const image = product.images?.[0];
 
   return (
     <div className="product-card">
-      {image ? (
-        <img
-          src={`data:${image.contentType};base64,${image.data}`}
-          alt={product.name}
-          className="product-img"
-        />
-      ) : (
-        <div className="no-img">No Image</div>
-      )}
+      <ProductImageCarousel images={product.images || []} />
+
       <div className="product-details">
         <h4>{product.name}</h4>
+        <p className="product-description">
+          {product.description?.slice(0, 120) || "No description available."}
+        </p>
         <p className="price">₹{product.price}</p>
         <p className="artisan">By {product.artisan.name}</p>
         <button

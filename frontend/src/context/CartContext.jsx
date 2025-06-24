@@ -8,7 +8,6 @@ export const useCart = () => useContext(CartContext);
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
 
-  // Fetch cart from backend
   const fetchCart = async () => {
     try {
       const res = await axiosInstance.get("/cart");
@@ -67,6 +66,7 @@ export const CartProvider = ({ children }) => {
         updateCartItem,
         removeFromCart,
         clearCart,
+        fetchCart,
       }}
     >
       {children}

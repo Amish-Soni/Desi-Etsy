@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useCart } from "../context/CartContext";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../utils/axiosInstance";
@@ -7,8 +7,13 @@ import "../styles/Cart.css";
 
 const Cart = () => {
   const navigate = useNavigate();
-  const { cartItems, updateCartItem, removeFromCart, clearCart } = useCart();
+  const { cartItems, updateCartItem, removeFromCart, clearCart, fetchCart } =
+    useCart();
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    fetchCart();
+  }, []);
 
   const total = cartItems.reduce(
     (sum, item) => sum + item.product.price * item.quantity,
@@ -100,36 +105,47 @@ const Cart = () => {
   };
 
   return (
-    <div className="cart-container">
-      <h2>Your Cart</h2>
+    <div className="cart-wrapper">
+      <div className="cart-header">
+        <h2>Your Cart</h2>
+      </div>
+
       {cartItems.length === 0 ? (
-        <p>Cart is empty</p>
+        <div className="cart-empty">Your cart is empty.</div>
       ) : (
-        <>
-          {cartItems.map(({ product, quantity }) => (
-            <div key={product._id} className="cart-item">
-              <img
-                src={`data:${product.images[0]?.contentType};base64,${product.images[0]?.data}`}
-                alt={product.name}
-              />
-              <div className="info">
-                <h4>{product.name}</h4>
-                <p>₹{product.price}</p>
-                <div className="qty-controls">
-                  <button onClick={() => decrement(product._id, quantity)}>
-                    -
-                  </button>
-                  <span>{quantity}</span>
-                  <button onClick={() => increment(product._id, quantity)}>
-                    +
-                  </button>
+        <div className="cart-grid">
+          <div className="cart-list">
+            {cartItems.map(({ product, quantity }) => (
+              <div key={product._id} className="cart-item">
+                <img
+                  src={`data:${product.images[0]?.contentType};base64,${product.images[0]?.data}`}
+                  alt={product.name}
+                />
+                <div className="cart-item-details">
+                  <h4>{product.name}</h4>
+                  <p>₹{product.price}</p>
+                  <div className="cart-actions">
+                    <div className="qty-btns">
+                      <button onClick={() => decrement(product._id, quantity)}>
+                        -
+                      </button>
+                      <span>{quantity}</span>
+                      <button onClick={() => increment(product._id, quantity)}>
+                        +
+                      </button>
+                    </div>
+                    <button
+                      className="remove-btn"
+                      onClick={() => removeFromCart(product._id)}
+                    >
+                      Remove
+                    </button>
+                  </div>
                 </div>
-                <button onClick={() => removeFromCart(product._id)}>
-                  Remove
-                </button>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+
           <div className="cart-summary">
             <h3>Total: ₹{total}</h3>
             <button
@@ -140,7 +156,7 @@ const Cart = () => {
               {loading ? "Processing..." : "Pay Now"}
             </button>
           </div>
-        </>
+        </div>
       )}
     </div>
   );

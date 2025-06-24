@@ -42,7 +42,7 @@
 }
 
 .pending-product-image {
-  height: 250px;
+  max-height: 250px;
   margin-bottom: 15px;
   overflow: hidden;
   border-radius: 8px;

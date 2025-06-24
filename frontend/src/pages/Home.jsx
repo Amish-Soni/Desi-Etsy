@@ -79,6 +79,7 @@ const Home = () => {
           </div>
         </section>
       </div>
+      <h2 className="shop-heading">Shop Now</h2>
       <div className="home-container">
         <FilterSidebar filters={filters} setFilters={setFilters} />
         <ProductList products={products} />
