@@ -44,7 +44,8 @@ export const getAllOrders = async (req, res) => {
   try {
     const orders = await Order.find({})
       .populate("user", "name email")
-      .populate("items.product");
+      .populate("items.product")
+      .sort({ createdAt: -1 });
     res.status(200).json(orders);
   } catch (err) {
     res.status(500).json({ message: "Failed to fetch orders" });
