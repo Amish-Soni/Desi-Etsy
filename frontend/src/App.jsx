@@ -2,7 +2,6 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import ArtisanRegister from "./components/Auth/ArtisanRegister";
-import ArtisanLogin from "./components/Auth/ArtisanLogin";
 import ArtisanDashboard from "./components/Artisan/ArtisanDashboard";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
@@ -29,7 +28,6 @@ function App() {
         <Route path="/my-orders" element={<MyOrders />} />
 
         <Route path="/artisan/register" element={<ArtisanRegister />} />
-        <Route path="/artisan/login" element={<ArtisanLogin />} />
         <Route path="/artisan/dashboard" element={<ArtisanDashboard />} />
 
         <Route path="/admin/pending-artisans" element={<PendingArtisans />} />

@@ -9,7 +9,7 @@ const ProductImageCarousel = ({ images }) => {
     if (images.length > 1) {
       intervalRef.current = setInterval(() => {
         setCurrentIndex((prev) => (prev + 1) % images.length);
-      }, 4000); // 4s slideshow
+      }, 4000);
     }
 
     return () => clearInterval(intervalRef.current);
@@ -37,15 +37,14 @@ const ProductImageCarousel = ({ images }) => {
     }, 4000);
   };
 
-  // Touch swipe handlers
   const handleTouchStart = (e) => {
     touchStartX.current = e.touches[0].clientX;
   };
 
   const handleTouchEnd = (e) => {
     const diff = e.changedTouches[0].clientX - touchStartX.current;
-    if (diff > 50) prevImage(); // swipe right
-    else if (diff < -50) nextImage(); // swipe left
+    if (diff > 50) prevImage();
+    else if (diff < -50) nextImage();
   };
 
   return (

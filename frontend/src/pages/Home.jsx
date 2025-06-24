@@ -15,6 +15,17 @@ const Home = () => {
   });
   const [featuredArtisans, setFeaturedArtisans] = useState([]);
 
+  const artisanBioPlaceholders = [
+    "Passionate artisan creating handmade goods.",
+    "Crafting unique pieces with love and care.",
+    "Dedicated to preserving traditional craftsmanship.",
+    "Bringing creativity to life through handmade art.",
+    "Transforming raw materials into beautiful creations.",
+    "Inspired by nature, creating art that tells a story.",
+    "Fusing modern design with traditional techniques.",
+    "Creating sustainable art for a better world.",
+  ];
+
   const fetchProducts = async () => {
     try {
       const queryParams = new URLSearchParams(filters).toString();
@@ -58,21 +69,18 @@ const Home = () => {
             {featuredArtisans.length === 0 ? (
               <p>No artisans to display</p>
             ) : (
-              featuredArtisans.map((artisan) => (
+              featuredArtisans.map((artisan, i) => (
                 <div className="artisan-card" key={artisan._id}>
                   <img
                     src={
                       artisan.profileImage
                         ? `data:${artisan.profileImage.contentType};base64,${artisan.profileImage.data}`
-                        : "/artisan.jpg"
+                        : `/artisan${i + 1}.jpg`
                     }
                     alt={artisan.name}
                   />
                   <h4>{artisan.name}</h4>
-                  <p>
-                    {artisan.bio ||
-                      "Passionate artisan creating handmade goods."}
-                  </p>
+                  <p>{artisan.bio || artisanBioPlaceholders[i]}</p>
                 </div>
               ))
             )}

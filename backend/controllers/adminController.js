@@ -1,7 +1,6 @@
 import User from "../models/userModel.js";
 import Product from "../models/productModel.js";
 
-// Get all artisan users pending approval
 export const getPendingArtisans = async (req, res) => {
   try {
     const artisans = await User.find({ role: "artisan", isApproved: false });
@@ -11,7 +10,6 @@ export const getPendingArtisans = async (req, res) => {
   }
 };
 
-// Approve artisan
 export const approveArtisan = async (req, res) => {
   const { artisanId } = req.params;
   try {
@@ -26,7 +24,6 @@ export const approveArtisan = async (req, res) => {
   }
 };
 
-// Reject (or delete) artisan
 export const rejectArtisan = async (req, res) => {
   const { artisanId } = req.params;
   try {
@@ -37,7 +34,6 @@ export const rejectArtisan = async (req, res) => {
   }
 };
 
-// Get all unapproved products
 export const getPendingProducts = async (req, res) => {
   try {
     const pendingProducts = await Product.find({ isApproved: false }).populate(
@@ -49,7 +45,6 @@ export const getPendingProducts = async (req, res) => {
   }
 };
 
-// Approve a product
 export const approveProduct = async (req, res) => {
   try {
     const product = await Product.findByIdAndUpdate(
@@ -63,7 +58,6 @@ export const approveProduct = async (req, res) => {
   }
 };
 
-// Reject (delete) a product
 export const rejectProduct = async (req, res) => {
   try {
     await Product.findByIdAndDelete(req.params.id);

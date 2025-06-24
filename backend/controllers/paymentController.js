@@ -2,13 +2,12 @@ import razorpay from "../config/razorpay.js";
 import crypto from "crypto";
 import Order from "../models/orderModel.js";
 
-// Create Razorpay order
 export const createRazorpayOrder = async (req, res) => {
   try {
     const { amount } = req.body;
 
     const options = {
-      amount: amount * 100, // in paisa
+      amount: amount * 100,
       currency: "INR",
       receipt: `receipt_order_${Date.now()}`,
     };
@@ -20,7 +19,6 @@ export const createRazorpayOrder = async (req, res) => {
   }
 };
 
-// Verify payment
 export const verifyPayment = async (req, res) => {
   try {
     const { orderId, paymentId, signature } = req.body;

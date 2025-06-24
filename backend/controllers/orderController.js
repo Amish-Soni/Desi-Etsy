@@ -1,6 +1,5 @@
 import Order from "../models/orderModel.js";
 
-// Place new order
 export const placeOrder = async (req, res) => {
   try {
     const { items, totalAmount, razorpayOrderId } = req.body;
@@ -17,7 +16,6 @@ export const placeOrder = async (req, res) => {
   }
 };
 
-// Get user's order history
 export const getUserOrders = async (req, res) => {
   try {
     const orders = await Order.find({ user: req.user._id })
@@ -29,7 +27,6 @@ export const getUserOrders = async (req, res) => {
   }
 };
 
-// Admin: update order status
 export const updateOrderStatus = async (req, res) => {
   try {
     const { orderId, status } = req.body;

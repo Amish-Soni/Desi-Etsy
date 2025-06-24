@@ -1,6 +1,5 @@
 import Product from "../models/productModel.js";
 
-// Create a new product
 export const createProduct = async (req, res) => {
   try {
     const artisanId = req.user._id;
@@ -14,7 +13,7 @@ export const createProduct = async (req, res) => {
       category,
       artisan: artisanId,
       isApproved: false,
-      images, // expecting array of { data, contentType }
+      images,
     });
 
     await product.save();
@@ -28,7 +27,6 @@ export const createProduct = async (req, res) => {
   }
 };
 
-// Get all products of logged-in artisan
 export const getMyProducts = async (req, res) => {
   try {
     const products = await Product.find({ artisan: req.user._id });
@@ -38,12 +36,11 @@ export const getMyProducts = async (req, res) => {
   }
 };
 
-// Update a product
 export const updateProduct = async (req, res) => {
   try {
     const updated = await Product.findOneAndUpdate(
       { _id: req.params.id, artisan: req.user._id },
-      { ...req.body, isApproved: false }, // mark as pending re-approval
+      { ...req.body, isApproved: false },
       { new: true }
     );
     res.status(200).json({ message: "Product updated", product: updated });
@@ -52,7 +49,6 @@ export const updateProduct = async (req, res) => {
   }
 };
 
-// Delete a product
 export const deleteProduct = async (req, res) => {
   try {
     await Product.findOneAndDelete({
@@ -65,12 +61,10 @@ export const deleteProduct = async (req, res) => {
   }
 };
 
-// Get all approved products (for customers)
 export const getAllApprovedProducts = async (req, res) => {
   try {
     const { category, artisan, search, minPrice, maxPrice } = req.query;
 
-    // Build filter object dynamically
     const filter = { isApproved: true };
 
     if (category) filter.category = category;
@@ -83,14 +77,12 @@ export const getAllApprovedProducts = async (req, res) => {
     }
 
     if (search) {
-      // Search by product name or description (case-insensitive)
       filter.$or = [
         { name: { $regex: search, $options: "i" } },
         { description: { $regex: search, $options: "i" } },
       ];
     }
 
-    // Populate category and artisan names
     const products = await Product.find(filter)
       .populate("category", "name")
       .populate("artisan", "name")

@@ -10,12 +10,11 @@ import { requireAuth, checkRole } from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
 
-router.get("/approved", getAllApprovedProducts); // Public product listings
+router.get("/approved", getAllApprovedProducts);
 
 router.use(requireAuth);
 router.use(checkRole(["artisan"]));
 
-// Artisan-side Product Routes
 router.post("/", createProduct);
 router.get("/my-approved", getMyProducts);
 router.put("/:id", updateProduct);

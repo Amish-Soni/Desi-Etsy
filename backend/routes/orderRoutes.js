@@ -11,11 +11,9 @@ const router = express.Router();
 
 router.use(requireAuth);
 
-// Customer
 router.post("/place", checkRole(["customer"]), placeOrder);
 router.get("/my-orders", checkRole(["customer"]), getUserOrders);
 
-// Admin
 router.get("/all", checkRole(["admin"]), getAllOrders);
 router.put("/update-status", checkRole(["admin"]), updateOrderStatus);
 

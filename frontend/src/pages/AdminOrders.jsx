@@ -7,7 +7,7 @@ const AdminOrders = () => {
   const [orders, setOrders] = useState([]);
   const [filteredOrders, setFilteredOrders] = useState([]);
   const [filterStatus, setFilterStatus] = useState("All");
-  const [statusUpdates, setStatusUpdates] = useState({}); // Track dropdown selections
+  const [statusUpdates, setStatusUpdates] = useState({});
 
   const fetchOrders = async () => {
     try {

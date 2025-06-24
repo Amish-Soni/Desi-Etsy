@@ -2,17 +2,7 @@ import React, { useState } from "react";
 import ProductImageCarousel from "./ProductImageCarousel";
 
 const ProductCard = ({ product, onEdit, onDelete }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
   const images = product.images || [];
-
-  const prevImage = () => {
-    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
-  };
-
-  const nextImage = () => {
-    setCurrentIndex((prev) => (prev + 1) % images.length);
-  };
-
   return (
     <div className="artisan-product-card">
       <div className="carousel-container">
