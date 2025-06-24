@@ -40,7 +40,7 @@ const ArtisanDashboard = () => {
 
   return (
     <div className="artisan-dashboard">
-      <h2>Welcome, {authUser?.name}</h2>
+      <h2 className="welcome-heading">Welcome {authUser?.name}</h2>
       <ProductForm
         refreshProducts={getMyProducts}
         editingProduct={editingProduct}
