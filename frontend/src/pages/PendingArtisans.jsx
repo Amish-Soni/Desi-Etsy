@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axiosInstance from "../utils/axiosInstance";
 import { toast } from "react-hot-toast";
-import "../styles/Admin.css";
+import "../styles/PendingArtisans.css";
 
 const PendingArtisans = () => {
   const [artisans, setArtisans] = useState([]);
@@ -40,29 +40,37 @@ const PendingArtisans = () => {
   }, []);
 
   return (
-    <div className="admin-section">
-      <h3>Pending Artisan Approvals</h3>
+    <div className="pending-artisans-page">
+      <h2>Pending Artisan Approvals</h2>
       {artisans.length === 0 ? (
-        <p>No pending artisans.</p>
+        <p className="empty-message">
+          No pending artisan requests at the moment.
+        </p>
       ) : (
-        <ul>
+        <div className="artisan-card-grid">
           {artisans.map((artisan) => (
-            <li key={artisan._id}>
-              <span>
-                {artisan.name} ({artisan.email})
-              </span>
-              <button onClick={() => handleApprove(artisan._id)}>
-                Approve
-              </button>
-              <button
-                onClick={() => handleReject(artisan._id)}
-                className="danger"
-              >
-                Reject
-              </button>
-            </li>
+            <div key={artisan._id} className="artisan-card">
+              <div className="artisan-details">
+                <h4>{artisan.name}</h4>
+                <p>Email: {artisan.email}</p>
+              </div>
+              <div className="artisan-actions">
+                <button
+                  className="btn-approve"
+                  onClick={() => handleApprove(artisan._id)}
+                >
+                  Approve
+                </button>
+                <button
+                  className="btn-reject"
+                  onClick={() => handleReject(artisan._id)}
+                >
+                  Reject
+                </button>
+              </div>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );

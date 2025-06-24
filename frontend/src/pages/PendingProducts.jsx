@@ -3,6 +3,7 @@ import axiosInstance from "../utils/axiosInstance";
 import { toast } from "react-hot-toast";
 import "../styles/Admin.css";
 import "../styles/Artisan.css";
+import "../styles/PendingProducts.css";
 import ProductImageCarousel from "../components/Artisan/ProductImageCarousel";
 
 const PendingProducts = () => {
@@ -42,44 +43,51 @@ const PendingProducts = () => {
   }, []);
 
   return (
-    <div className="admin-section">
-      <h3>Pending Products</h3>
+    <div className="pending-products-page">
+      <h2>Pending Product Approvals</h2>
 
       {products.length === 0 ? (
-        <p>No pending products.</p>
+        <p className="no-products-msg">No pending products at the moment.</p>
       ) : (
-        <div className="product-list">
+        <div className="pending-products-grid">
           {products.map((product) => (
-            <div className="artisan-product-card" key={product._id}>
-              <div className="carousel-container">
+            <div className="pending-product-card" key={product._id}>
+              <div className="pending-product-image">
                 {product.images?.length > 0 ? (
                   <ProductImageCarousel images={product.images} />
                 ) : (
-                  <div className="carousel-placeholder">No image available</div>
+                  <div className="no-image-box">No image available</div>
                 )}
               </div>
 
-              <h4>{product.name}</h4>
-              <p>{product.description}</p>
-              <p>
-                <strong>₹{product.price}</strong> | Stock: {product.stock}
-              </p>
-              <p>
-                Category: <strong>{product.category?.name}</strong>
-              </p>
-              <p>
-                Artisan: <strong>{product.artisan?.name}</strong>
-              </p>
+              <div className="pending-product-info">
+                <h4>{product.name}</h4>
+                <p className="product-desc">{product.description}</p>
+                <p className="product-meta">
+                  ₹{product.price} | Stock: {product.stock}
+                </p>
+                <p>
+                  Category: <strong>{product.category?.name}</strong>
+                </p>
+                <p>
+                  Artisan: <strong>{product.artisan?.name}</strong>
+                </p>
+              </div>
 
-              <button onClick={() => handleApprove(product._id)}>
-                Approve
-              </button>
-              <button
-                onClick={() => handleReject(product._id)}
-                className="delete-btn"
-              >
-                Reject
-              </button>
+              <div className="pending-product-actions">
+                <button
+                  onClick={() => handleApprove(product._id)}
+                  className="btn-approve"
+                >
+                  Approve
+                </button>
+                <button
+                  onClick={() => handleReject(product._id)}
+                  className="btn-reject"
+                >
+                  Reject
+                </button>
+              </div>
             </div>
           ))}
         </div>

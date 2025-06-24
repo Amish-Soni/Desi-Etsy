@@ -46,11 +46,11 @@
 
 .auth-page {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 93vh;
   background: #fcefe6;
-  flex-direction: column;
 }
 
 .auth-form {
@@ -92,4 +92,12 @@
 
 .auth-form button:hover {
   background-color: #8b5d3c;
+}
+
+.artisan-register {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 93vh;
+  padding: 0 20px;
 }

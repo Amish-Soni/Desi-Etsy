@@ -71,7 +71,7 @@ const AdminOrders = () => {
       </div>
 
       {filteredOrders.length === 0 ? (
-        <p>No orders found.</p>
+        <p className="no-orders-msg">No orders found.</p>
       ) : (
         filteredOrders.map((order) => (
           <div className="admin-order-card" key={order._id}>

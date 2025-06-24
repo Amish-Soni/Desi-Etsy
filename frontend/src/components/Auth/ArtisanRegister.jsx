@@ -31,35 +31,37 @@ const ArtisanRegister = () => {
   };
 
   return (
-    <div className="auth-form-container">
-      <h2>Artisan Registration</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Full Name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email Address"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Create Password"
-          value={formData.password}
-          onChange={handleChange}
-          required
-        />
-        <button type="submit">Register as Artisan</button>
-      </form>
+    <div className="artisan-register">
+      <div className="auth-form-container">
+        <h2>Artisan Registration</h2>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="name"
+            placeholder="Full Name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email Address"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Create Password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+          <button type="submit">Register as Artisan</button>
+        </form>
+      </div>
     </div>
   );
 };
