@@ -49,7 +49,7 @@ const ProductForm = ({
         description: editingProduct.description,
         price: editingProduct.price,
         stock: editingProduct.stock,
-        category: editingProduct.category?._id || "",
+        category: editingProduct.category || "",
         images: editingProduct.images || [],
       });
     }
@@ -81,9 +81,24 @@ const ProductForm = ({
     if (formData.imageFile) data.append("image", formData.imageFile);
 
     try {
-      await axiosInstance.post("/products", formData);
-      toast.success("Product added");
+      if (editingProduct) {
+        await axiosInstance.put(`/products/${editingProduct._id}`, formData);
+        toast.success("Product updated");
+      } else {
+        await axiosInstance.post("/products", formData);
+        toast.success("Product added");
+      }
+
       refreshProducts();
+      setEditingProduct(null);
+      setFormData({
+        name: "",
+        description: "",
+        price: "",
+        stock: "",
+        category: "",
+        images: [],
+      });
     } catch (err) {
       toast.error("Upload failed");
     }
