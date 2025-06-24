@@ -116,3 +116,17 @@
 .btn-reject:hover {
   background-color: #8b1a1a;
 }
+
+@media screen and (max-width: 768px) {
+  .pending-products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .pending-products-page {
+    padding: 20px 10px;
+  }
+
+  .pending-product-card {
+    padding: 15px;
+  }
+}
