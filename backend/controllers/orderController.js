@@ -20,9 +20,9 @@ export const placeOrder = async (req, res) => {
 // Get user's order history
 export const getUserOrders = async (req, res) => {
   try {
-    const orders = await Order.find({ user: req.user._id }).populate(
-      "items.product"
-    );
+    const orders = await Order.find({ user: req.user._id })
+      .populate("items.product")
+      .sort({ createdAt: -1 });
     res.status(200).json(orders);
   } catch (err) {
     res.status(500).json({ message: "Failed to fetch orders" });
