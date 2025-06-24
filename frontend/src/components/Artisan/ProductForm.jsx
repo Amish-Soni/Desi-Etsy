@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axiosInstance from "../../utils/axiosInstance";
 import toast from "react-hot-toast";
 
@@ -15,6 +15,7 @@ const ProductForm = ({
     category: "",
     images: [],
   });
+  const fileInputRef = useRef(null);
 
   const handleMultipleImages = (e) => {
     const files = Array.from(e.target.files);
@@ -99,6 +100,7 @@ const ProductForm = ({
         category: "",
         images: [],
       });
+      fileInputRef.current.value = null;
     } catch (err) {
       toast.error("Upload failed");
     }
@@ -152,6 +154,7 @@ const ProductForm = ({
         ))}
       </select>
       <input
+        ref={fileInputRef}
         type="file"
         accept="image/*"
         multiple

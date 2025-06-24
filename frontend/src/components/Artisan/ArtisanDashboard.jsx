@@ -14,7 +14,7 @@ const ArtisanDashboard = () => {
   const getMyProducts = async () => {
     try {
       const res = await axiosInstance.get("/products/my-approved");
-      setProducts(res.data); // your API directly returns array
+      setProducts(res.data);
     } catch (err) {
       toast.error("Failed to load products");
     }
