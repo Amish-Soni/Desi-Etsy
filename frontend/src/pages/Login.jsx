@@ -41,6 +41,15 @@ const Login = () => {
       />
 
       <p style={{ marginTop: "1rem", textAlign: "center" }}>
+        <Link 
+          to="/forgot-password" 
+          style={{ color: "#555", textDecoration: "underline" }}
+        >
+          Forgot Password?
+        </Link>
+      </p> 
+      
+      <p style={{ marginTop: "1rem", textAlign: "center" }}>
         Not registered yet?{" "}
         <Link
           to="/register"
@@ -59,6 +68,8 @@ const Login = () => {
           Register as Artisan
         </Link>
       </p>
+
+
     </div>
   );
 };
