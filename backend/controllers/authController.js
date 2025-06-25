@@ -114,7 +114,7 @@ export const forgotPasswordController = async (req, res) => {
     });
 
     await transporter.sendMail({
-      from: '"Desi Etsy Support" <support@desi-etsy.com>',
+      from: '"Desi Etsy Support" <soni2003amish@gmail.com>',
       to: user.email,
       subject: "Your Password Reset Token (valid for 10 min)",
       text: message,
