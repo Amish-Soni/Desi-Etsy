@@ -1,4 +1,3 @@
-// src/pages/ForgotPassword.jsx
 import React, { useState } from "react";
 import axiosInstance from "../utils/axiosInstance";
 import { toast } from "react-hot-toast";
@@ -11,7 +10,6 @@ const ForgotPassword = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      // Calls the backend to generate and send the secure link
       const res = await axiosInstance.post("/auth/forgot-password", { email });
       toast.success(res.data.message);
     } catch (err) {
@@ -26,16 +24,14 @@ const ForgotPassword = () => {
       <form className="auth-form" onSubmit={handleSubmit}>
         <h2>Forgot Password</h2>
         <p>Enter your email address to receive a password reset link.</p>
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter your email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
         <button type="submit" className="auth-btn" disabled={loading}>
           {loading ? "Sending..." : "Send Reset Link"}
         </button>

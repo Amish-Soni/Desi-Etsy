@@ -5,6 +5,8 @@ import ArtisanRegister from "./components/Auth/ArtisanRegister";
 import ArtisanDashboard from "./components/Artisan/ArtisanDashboard";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
 import MyOrders from "./pages/MyOrders";
@@ -29,6 +31,9 @@ function App() {
 
         <Route path="/artisan/register" element={<ArtisanRegister />} />
         <Route path="/artisan/dashboard" element={<ArtisanDashboard />} />
+
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password/:token" element={<ResetPassword />} />
 
         <Route path="/admin/pending-artisans" element={<PendingArtisans />} />
         <Route path="/admin/pending-products" element={<PendingProducts />} />
