@@ -14,7 +14,7 @@ Backend: Hosted on Render
 ## 📂 Folder Structure
 
 ```
-desi-etsy/
+Infotact-Project-1/
 ├── backend/             # Node.js + Express API
 ├── frontend/            # ReactJS client app
 └── README.md
@@ -157,7 +157,7 @@ npm run dev
 ## 🙌 Credits
 
 Developed by Infotact Group 10 - SD  
-Under the project: **Desi Etsy - Niche E-commerce for Handmade Products**  
+Under the project: **Desi Etsy - Niche E-commerce Platform for Handmade Products**  
 Stack: **MERN**
 
 ---
