@@ -60,7 +60,7 @@ export const CartProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    if (authUser) fetchCart();
+    if (authUser?.role === "customer") fetchCart();
   }, [authUser]);
 
   return (
