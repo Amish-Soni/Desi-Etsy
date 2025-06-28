@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import axiosInstance from "../utils/axiosInstance";
 import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -12,6 +14,7 @@ const ForgotPassword = () => {
     try {
       const res = await axiosInstance.post("/auth/forgot-password", { email });
       toast.success(res.data.message);
+      navigate("/login");
     } catch (err) {
       toast.error("An error occurred. Please try again.");
     } finally {
