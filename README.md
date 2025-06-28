@@ -119,7 +119,7 @@ EMAIL_USER=your_email@example.com
 EMAIL_PASS=your_email_password
 RAZORPAY_KEY_ID=your_razorpay_key
 RAZORPAY_SECRET=your_razorpay_secret
-FRONTEND_URL=http://localhost:8080
+FRONTEND_URL=your_frontend_url
 ```
 
 Start the server:
