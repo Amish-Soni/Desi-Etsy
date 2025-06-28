@@ -17,7 +17,7 @@ const ArtisanNavbar = () => {
       await axiosInstance.post("/auth/logout");
       setAuthUser(null);
       toast.success("Logged out");
-      navigate("/login");
+      navigate("/");
     } catch {
       toast.error("Logout failed");
     }
