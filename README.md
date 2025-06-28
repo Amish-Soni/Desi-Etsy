@@ -7,7 +7,7 @@ Desi Etsy is a full-stack MERN (MongoDB, Express, React, Node.js) web applicatio
 ## 🌐 Live Demo
 
 Frontend: [https://infotact-project-desi-etsy.netlify.app](https://infotact-project-desi-etsy.netlify.app)  
-Backend: Hosted on Render 
+Backend: Hosted on Render
 
 ---
 
@@ -25,6 +25,7 @@ Infotact-Project-1/
 ## 🚀 Tech Stack
 
 ### 🔧 Backend:
+
 - **Node.js**
 - **Express.js**
 - **MongoDB** + Mongoose
@@ -33,6 +34,7 @@ Infotact-Project-1/
 - **Nodemailer** for password reset via email
 
 ### 🎨 Frontend:
+
 - **React.js**
 - **React Router DOM**
 - **React Context API** for auth & cart
@@ -45,16 +47,19 @@ Infotact-Project-1/
 ## 🧑‍💼 User Roles
 
 ### 🛒 Customer:
+
 - Browse products using filters
 - Add to cart and checkout using Razorpay
 - View order history
 
 ### 🎨 Artisan:
+
 - Register and login
 - Upload handmade products for admin approval
 - Manage their product listings
 
 ### 🛠️ Admin:
+
 - Approve/reject products and artisan registrations
 - View and update order status (Pending, Packed, Shipped, Delivered)
 
@@ -86,7 +91,6 @@ Infotact-Project-1/
 
 ---
 
-
 ## 📥 Getting Started
 
 ### 1. Clone the repository
@@ -109,17 +113,17 @@ Create a `.env` file in `/backend`:
 PORT=8080
 MONGO_URI=your_mongodb_uri
 JWT_SECRET=your_jwt_secret
-COOKIE_SECRET=your_cookie_secret
 EMAIL_HOST=smtp-relay.brevo.com
 EMAIL_PORT=587
 EMAIL_USER=your_email@example.com
 EMAIL_PASS=your_email_password
 RAZORPAY_KEY_ID=your_razorpay_key
-RAZORPAY_KEY_SECRET=your_razorpay_secret
-BASE_URL=http://localhost:8080
+RAZORPAY_SECRET=your_razorpay_secret
+FRONTEND_URL=http://localhost:8080
 ```
 
 Start the server:
+
 ```bash
 npm run dev
 ```
@@ -134,11 +138,12 @@ npm install
 Create `.env` file in `/frontend`:
 
 ```env
-VITE_API_BASE=http://localhost:8080
+VITE_API_URL=your_backend_url/api
 VITE_RAZORPAY_KEY_ID=your_razorpay_key
 ```
 
 Start the frontend:
+
 ```bash
 npm run dev
 ```

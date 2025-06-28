@@ -75,7 +75,7 @@ const Home = () => {
                     src={
                       artisan.profileImage
                         ? `data:${artisan.profileImage.contentType};base64,${artisan.profileImage.data}`
-                        : `/artisan${i + 1}.jpg`
+                        : `/artisan${(i % 3) + 1}.jpg`
                     }
                     alt={artisan.name}
                   />

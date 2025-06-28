@@ -21,7 +21,6 @@ export const CartProvider = ({ children }) => {
     try {
       await axiosInstance.post("/cart/add", { productId, quantity });
       await fetchCart();
-      toast.success("Added to cart");
     } catch {
       toast.error("Add to cart failed");
     }
@@ -29,10 +28,14 @@ export const CartProvider = ({ children }) => {
 
   const updateCartItem = async (productId, quantity) => {
     try {
-      await axiosInstance.put("/cart/update", { productId, quantity });
+      const res = await axiosInstance.put("/cart/update", {
+        productId,
+        quantity,
+      });
       await fetchCart();
+      toast.success(`${res.data.message}`);
     } catch {
-      toast.error("Failed to update quantity");
+      toast.error(`${res.data.message}`);
     }
   };
 
