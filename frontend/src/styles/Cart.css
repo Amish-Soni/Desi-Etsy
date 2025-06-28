@@ -119,6 +119,15 @@
   color: #3b2a20;
 }
 
+.qty-btns button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.qty-btns button:disabled:hover {
+  background: #c69c81;
+  transform: none;
+}
+
 .remove-btn {
   background: transparent;
   border: none;

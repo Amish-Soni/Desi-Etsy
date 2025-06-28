@@ -126,7 +126,10 @@ const Cart = () => {
                   <p>₹{product.price}</p>
                   <div className="cart-actions">
                     <div className="qty-btns">
-                      <button onClick={() => decrement(product._id, quantity)}>
+                      <button
+                        onClick={() => decrement(product._id, quantity)}
+                        disabled={quantity === 1}
+                      >
                         -
                       </button>
                       <span>{quantity}</span>
