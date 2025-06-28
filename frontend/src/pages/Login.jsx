@@ -7,8 +7,19 @@ import { AuthContext } from "../context/AuthContext";
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
-  const { setAuthUser } = useContext(AuthContext);
+  const { authUser, setAuthUser } = useContext(AuthContext);
   const navigate = useNavigate();
+
+  if (authUser) {
+    const role = authUser?.role;
+    if (role === "admin") {
+      navigate("/admin/orders");
+    } else if (role === "artisan") {
+      navigate("/artisan/dashboard");
+    } else {
+      navigate("/home");
+    }
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -41,14 +52,14 @@ const Login = () => {
       />
 
       <p style={{ marginTop: "1rem", textAlign: "center" }}>
-        <Link 
-          to="/forgot-password" 
+        <Link
+          to="/forgot-password"
           style={{ color: "#555", textDecoration: "underline" }}
         >
           Forgot Password?
         </Link>
-      </p> 
-      
+      </p>
+
       <p style={{ marginTop: "1rem", textAlign: "center" }}>
         Not registered yet?{" "}
         <Link
@@ -68,8 +79,6 @@ const Login = () => {
           Register as Artisan
         </Link>
       </p>
-
-
     </div>
   );
 };

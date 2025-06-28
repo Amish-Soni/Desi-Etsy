@@ -1,11 +1,13 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import axiosInstance from "../utils/axiosInstance";
 import { toast } from "react-hot-toast";
+import { AuthContext } from "./AuthContext";
 
 const CartContext = createContext();
 export const useCart = () => useContext(CartContext);
 
 export const CartProvider = ({ children }) => {
+  const { authUser } = useContext(AuthContext);
   const [cartItems, setCartItems] = useState([]);
 
   const fetchCart = async () => {
@@ -58,8 +60,8 @@ export const CartProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    fetchCart();
-  }, []);
+    if (authUser) fetchCart();
+  }, [authUser]);
 
   return (
     <CartContext.Provider
