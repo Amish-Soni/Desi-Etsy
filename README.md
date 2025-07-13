@@ -1,4 +1,4 @@
-# Infotact Project 1: 🧵 Desi Etsy - Handmade Products E-commerce Platform
+# 🧵 Desi Etsy - Handmade Products E-commerce Platform
 
 Desi Etsy is a full-stack MERN (MongoDB, Express, React, Node.js) web application designed to promote local artisans and their handmade products. It features customer shopping, artisan product listings, and admin moderation – creating a niche marketplace tailored to Indian crafts and handmade goods.
 
@@ -6,7 +6,7 @@ Desi Etsy is a full-stack MERN (MongoDB, Express, React, Node.js) web applicatio
 
 ## 🌐 Live Demo
 
-Frontend: [https://infotact-project-desi-etsy.netlify.app](https://infotact-project-desi-etsy.netlify.app)  
+Frontend: [https://desietsy.netlify.app](https://desietsy.netlify.app)  
 Backend: Hosted on Render
 
 ---
@@ -14,7 +14,7 @@ Backend: Hosted on Render
 ## 📂 Folder Structure
 
 ```
-Infotact-Project-1/
+Desi-Etsy/
 ├── backend/             # Node.js + Express API
 ├── frontend/            # ReactJS client app
 └── README.md
@@ -96,8 +96,8 @@ Infotact-Project-1/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/Amish-Soni/Infotact-Project-1.git
-cd Infotact-Project-1
+git clone https://github.com/Amish-Soni/Desi-Etsy.git
+cd Desi-Etsy
 ```
 
 ### 2. Setup Backend
@@ -158,10 +158,6 @@ npm run dev
 - Razorpay signature is verified on backend before order creation
 
 ---
-
-## 🙌 Credits
-
-Developed by Infotact Group 10 - SD  
 Under the project: **Desi Etsy - Niche E-commerce Platform for Handmade Products**  
 Stack: **MERN**
 
